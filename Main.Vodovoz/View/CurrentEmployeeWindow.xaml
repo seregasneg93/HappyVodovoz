@@ -1,0 +1,34 @@
+﻿<Window x:Class="Main.Vodovoz.View.CurrentEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Main.Vodovoz.View"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"        
+        d:DataContext="{d:DesignInstance Type=vm:CurrentEmployeeModel}"
+        xmlns:vm="clr-namespace:Main.Vodovoz.ViewModel"
+        mc:Ignorable="d"
+        Title="Изменить подразделение" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30"  Orientation="Vertical">
+            <Label Content="Имя:"/>
+            <TextBox FontFamily="Tahoma" Text="{Binding SelectedPresenterEmployee.Name}"/>
+            <Label Content="Фамилия:"/>
+            <TextBox FontFamily="Tahoma" Text="{Binding SelectedPresenterEmployee.SurName}"/>
+            <Label Content="Отчество:"/>
+            <TextBox FontFamily="Tahoma" Text="{Binding SelectedPresenterEmployee.Patronymic}"/>
+            <Label Content="Дата рождения:"/>
+            <DatePicker SelectedDate="{Binding SelectedPresenterEmployee.DateBirth}"/>
+            <Label Content="Пол:"/>
+            <ComboBox FontFamily="Tahoma" ItemsSource="{Binding CollectionsGenderPresenter}" SelectedItem="{Binding SelectedGender}"/>
+            <Label Content="Подразделение:"/>
+            <ComboBox FontFamily="Tahoma" ItemsSource="{Binding CollectionsDevisionPresenter}" SelectedItem="{Binding SelectedDivision}"/>
+            <Button Background="Transparent" BorderBrush="Transparent" ToolTip="Обновить сотрудника" HorizontalAlignment="Left" Margin="0,10,0,0"
+                    Command="{Binding RefreshChamgeEmployeeCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Refresh" Height="20" Width="30" Foreground="#FF57BD1D"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

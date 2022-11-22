@@ -1,0 +1,48 @@
+﻿<Window x:Class="Main.Vodovoz.View.ViewDevesionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Main.Vodovoz.View"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"        
+        d:DataContext="{d:DesignInstance Type=vm:ViewDivisionModel}"
+        xmlns:vm="clr-namespace:Main.Vodovoz.ViewModel"
+        mc:Ignorable="d"
+        Title="Подразделения" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30" Orientation="Horizontal">
+            <Button Background="Transparent" BorderBrush="Transparent" ToolTip="Добавить подразделение" HorizontalAlignment="Left" Margin="0,10,0,0"
+                    Command="{Binding OPenAddDivisionsCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Plus" Height="20" Width="30" Foreground="#FF57BD1D"/>
+                </StackPanel>
+            </Button>
+            <Button Background="Transparent" BorderBrush="Transparent" ToolTip="Изменить подразделение" HorizontalAlignment="Left" Margin="0,10,0,0"
+                    Command="{Binding OPenCurrentDivisionsCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Pencil" Height="20" Width="30" Foreground="#FF57BD1D"/>
+                </StackPanel>
+            </Button>
+            <Button Background="Transparent" BorderBrush="Transparent" ToolTip="Удалть подразделение" HorizontalAlignment="Left" Margin="0,10,0,0"
+                    Command="{Binding DeleteDivisionCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Minus" Height="20" Width="30" Foreground="#FF57BD1D"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <ListView Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,0,0,0" ItemsSource="{Binding CollectionsDevisionPresenter}"
+                  SelectedItem="{Binding SelectedPresenterDivision}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название подраздлеения" DisplayMemberBinding="{Binding NameDevision}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
